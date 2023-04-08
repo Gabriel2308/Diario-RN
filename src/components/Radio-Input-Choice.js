@@ -6,7 +6,19 @@ import {
     Text,
 } from 'react-native'
 
-export default ({initialChoice, items, horizontal = false, margin = null, marginBottom = null, onSelect, error = null }) =>{
+/*
+ * Componente radioInput.
+ * @function
+ * @param {Object} props - Propriedades necessárias para o estilo e funcionamento do RadioInput
+ * @param {function} props.onSelect - Evento que ocorre ao selecionar uma opção.
+ * @param {object} props.items - Conjunto de dados a serem colocados no Radio.
+ * @param {bool} props.horizontal - Se radiobutton é horinzontal ou vertical.
+ * @param {Integer} props.margin - Margem personalizada para espaçamento quando na horizontal.
+ * @param {String} props.initialChoice - Id da escolha inicial.
+ * @returns Componente radioInput com estilo aplicado.
+ */
+
+export default ({ initialChoice, items, horizontal = false, margin = null, marginBottom = null, onSelect, error = null }) => {
     const [selected, setSelected] = useState(initialChoice);
 
     const container = horizontal
@@ -45,17 +57,33 @@ export default ({initialChoice, items, horizontal = false, margin = null, margin
                     })
                 }
             </View>
-            {error && <ErrorText text={error} />}
+            {/* {error && <ErrorText text={error} />} */}
         </>
     );
 }
 
 const styles = StyleSheet.create({
-    descriptionInput:{
-        fontFamily: 'montserratSemi',
-        fontSize: 17,
-        marginBottom: 4,
-        color: '#000000',
-        fontWeight: 'bold'
+    alignContainer: {
+        flexDirection: 'row',
     },
-})
+    checkContainer: {
+        height: 20,
+        width: 20,
+        borderRadius: 12,
+        borderWidth: 1.5,
+        borderColor: "#000000",
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    check: {
+        height: 12,
+        width: 12,
+        borderRadius: 6,
+        backgroundColor: "#000000",
+    },
+    label: {
+        textAlign: 'justify',
+        color: "#00A1DE",
+        marginHorizontal: 10,
+    },
+});
